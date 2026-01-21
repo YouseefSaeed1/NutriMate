@@ -1,0 +1,48 @@
+name: nutrimate
+description: "NutriMate - Your personal nutrition and health companion."
+publish_to: 'none' 
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.9.2 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_ruler_picker: ^1.0.6
+  image_picker: ^1.2.1
+  google_mlkit_image_labeling: ^0.14.1
+  path_provider: ^2.1.5
+  http: ^1.6.0
+  sqflite: ^2.4.2
+  path: ^1.9.1
+  shared_preferences: ^2.5.4
+  flutter_riverpod: ^3.1.0
+  uuid: ^4.5.2
+  intl: ^0.20.2
+  flutter_launcher_icons: ^0.14.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/launcher_icon/icon.png"
+  min_sdk_android: 21
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/ml/
+    - assets/covers/
+  fonts:
+    - family: Pacifico
+      fonts:
+        - asset: assets/fonts/Pacifico-Regular.ttf
+    - family: Source Sans Pro
+      fonts:
+        - asset: assets/fonts/SourceSansPro-Regular.ttf
