@@ -4,7 +4,7 @@ NutriMate is a modern, feature-rich health and nutrition companion designed to h
 
 ## ✨ Features
 
-- **AI Food Scanner**: Identify food items instantly using the built-in camera. This feature utilizes a **custom-trained machine learning model** to recognize various food types accurately.
+- **AI Food Scanner**: Identify food items instantly by using the **built-in camera or selecting an image from your gallery**. This feature utilizes a **custom-trained machine learning model** to recognize various food types accurately.
 - **Smart Calorie Retrieval**: Once a food item is identified, the app automatically fetches real-time nutritional data (calories) via the **USDA FoodData Central API**.
 - **Advanced Health Calculators**: 
     - **BMI Calculator**: Real-time Body Mass Index calculation with animated visual feedback.
@@ -15,7 +15,7 @@ NutriMate is a modern, feature-rich health and nutrition companion designed to h
 - **Premium UI/UX**: 
     - **Custom Transitions**: Seamless page navigation using custom Fade and Slide transitions.
     - **Informative Tooltips**: Tap-to-reveal explanations for complex health metrics like BMR and TDEE.
-    - **Dark Theme**: A sleek, high-contrast dark design for comfortable use at any time of day.
+    - **Cohesive Design**: A sleek, professional visual interface designed for a premium user experience.
 
 |                        Home Screen                        | Daily Tracker Screen |
 |:---------------------------------------------------------:| :---: |
