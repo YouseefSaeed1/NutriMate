@@ -36,7 +36,7 @@ class CaloriesHeroText extends StatelessWidget {
                 ),
               ),
 
-              if (goal != null)
+              if (isToday)
                 WidgetSpan(
                   alignment: PlaceholderAlignment.middle,
                   child: GestureDetector(

@@ -90,6 +90,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         calories: _todayCalories,
                         goal: _calorieGoal,
                         isNormal: isNormal,
+                        isToday: true,
                       ),
                     ],
                   ),

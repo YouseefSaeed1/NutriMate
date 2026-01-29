@@ -146,12 +146,16 @@ class _DailyTrackerScreenState extends ConsumerState<DailyTrackerScreen> {
                                   .read(mealsProvider.notifier)
                                   .deleteMeal(meal.id),
                               background: Container(
-                                color: Colors.red.withValues(alpha: 0.1),
-                                margin: const EdgeInsets.symmetric(
-                                  horizontal: 10,
+                                decoration: BoxDecoration(
+                                  color: Colors.red.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(15),
                                 ),
-                                alignment: Alignment.centerRight,
-                                padding: const EdgeInsets.only(right: 20.0),
+                                margin: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
+                                alignment: Alignment.centerLeft,
+                                padding: const EdgeInsets.only(left: 20.0),
                                 child: const Icon(
                                   Icons.delete,
                                   color: Colors.white,

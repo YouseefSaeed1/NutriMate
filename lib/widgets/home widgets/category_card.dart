@@ -24,6 +24,9 @@ class CategoryCard extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
       child: InkWell(
         onTap: onTap,
+        borderRadius: BorderRadius.circular(25),
+        splashColor: Colors.transparent,
+        highlightColor: Colors.transparent,
         child: Container(
           width: double.infinity,
           height: height ?? 178,

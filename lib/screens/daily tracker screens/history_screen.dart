@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../providers/meals_provider.dart';
 import '../../widgets/transition/page_fade_transition.dart';
@@ -56,16 +55,13 @@ class HistoryScreen extends ConsumerWidget {
                 padding: const EdgeInsets.only(bottom: 12.0),
                 child: InkWell(
                   borderRadius: BorderRadius.circular(15),
-                  onTap: () async {
-                    final prefs = await SharedPreferences.getInstance();
-                    final goal = prefs.getDouble('calories') ?? 2000;
-
+                  onTap: () {
                     if (ctx.mounted) {
                       Navigator.of(ctx).push(
                         PageFadeTransition(
                           page: DailyTrackerScreen(
-                            calories: goal,
                             date: daily.date,
+                            calories: 0,
                           ),
                         ),
                       );
