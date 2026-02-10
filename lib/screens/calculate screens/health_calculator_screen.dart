@@ -65,89 +65,92 @@ class _HealthCalculatorScreenState extends State<HealthCalculatorScreen> {
     return Scaffold(
       body: ScreensCover(
         child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
-            child: Column(
-              children: [
-                const SizedBox(height: 15),
-                const Text(
-                  'Health Calculator',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Pacifico',
-                    letterSpacing: 2,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+              child: Column(
+                children: [
+                  const SizedBox(height: 15),
+                  const Text(
+                    'Health Calculator',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Pacifico',
+                      letterSpacing: 2,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 35),
-                Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: GenderCard(
-                            iconData: Icons.male,
-                            title: 'Male',
-                            isSelected: _selectedGender == Gender.male,
-                            onTap: () =>
-                                setState(() => _selectedGender = Gender.male),
-                          ),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: GenderCard(
-                            iconData: Icons.female,
-                            title: 'Female',
-                            isSelected: _selectedGender == Gender.female,
-                            onTap: () =>
-                                setState(() => _selectedGender = Gender.female),
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                    HeightCard(
-                      height: _currentHeight,
-                      rulerPickerController: _rulerPickerController,
-                      onValueChanged: (num value) {
-                        setState(() {
-                          _currentHeight = value.toInt();
-                        });
-                      },
-                    ),
-                    const SizedBox(height: 30),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: AgeWeightCard(
-                            title: 'Weight',
-                            child: WheelSelector(
-                              value: _currentWeight,
-                              min: 30,
-                              max: 150,
-                              onChanged: (newValue) =>
-                                  setState(() => _currentWeight = newValue),
+                  const SizedBox(height: 35),
+                  Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: GenderCard(
+                              iconData: Icons.male,
+                              title: 'Male',
+                              isSelected: _selectedGender == Gender.male,
+                              onTap: () =>
+                                  setState(() => _selectedGender = Gender.male),
                             ),
                           ),
-                        ),
-                        const SizedBox(width: 20),
-                        Expanded(
-                          child: AgeWeightCard(
-                            title: 'Age',
-                            child: AgeDetailsCard(
-                              age: _currentAge,
-                              minusFun: () => setState(() => _currentAge--),
-                              plusFun: () => setState(() => _currentAge++),
+                          const SizedBox(width: 16),
+                          Expanded(
+                            child: GenderCard(
+                              iconData: Icons.female,
+                              title: 'Female',
+                              isSelected: _selectedGender == Gender.female,
+                              onTap: () => setState(
+                                () => _selectedGender = Gender.female,
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 20),
-                  ],
-                ),
-                CalculateButton(onPressed: _analyzeData),
-              ],
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                      HeightCard(
+                        height: _currentHeight,
+                        rulerPickerController: _rulerPickerController,
+                        onValueChanged: (num value) {
+                          setState(() {
+                            _currentHeight = value.toInt();
+                          });
+                        },
+                      ),
+                      const SizedBox(height: 30),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: AgeWeightCard(
+                              title: 'Weight',
+                              child: WheelSelector(
+                                value: _currentWeight,
+                                min: 30,
+                                max: 150,
+                                onChanged: (newValue) =>
+                                    setState(() => _currentWeight = newValue),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: AgeWeightCard(
+                              title: 'Age',
+                              child: AgeDetailsCard(
+                                age: _currentAge,
+                                minusFun: () => setState(() => _currentAge--),
+                                plusFun: () => setState(() => _currentAge++),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
+                    ],
+                  ),
+                  CalculateButton(onPressed: _analyzeData),
+                ],
+              ),
             ),
           ),
         ),

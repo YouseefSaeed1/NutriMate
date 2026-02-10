@@ -104,76 +104,78 @@ class _FoodScannerScreenState extends State<FoodScannerScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ScreensCover(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                children: [
-                  const Text(
-                    'Food Scanner',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Pacifico',
-                      letterSpacing: 2,
-                    ),
-                  ),
-                  const SizedBox(height: 25),
-                  Card(
-                    color: Colors.grey.withValues(alpha: 0.2),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: SizedBox(
-                      width: double.infinity,
-                      height: MediaQuery.of(context).size.height / 3,
-                      child: _image == null
-                          ? const Icon(
-                              Icons.image_outlined,
-                              size: 150,
-                              color: Colors.white24,
-                            )
-                          : Image.file(_image!, fit: BoxFit.cover),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      scannerActionButton(
-                        icon: Icons.photo_library,
-                        onTap: () => _pickImage(ImageSource.gallery),
-                      ),
-                      const SizedBox(height: 30),
-                      scannerActionButton(
-                        icon: Icons.camera_alt,
-                        onTap: () => _pickImage(ImageSource.camera),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              if (_isLoading)
-                const CircularProgressIndicator(color: Colors.greenAccent)
-              else
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 20),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
                 Column(
                   children: [
-                    ResultColumn(title: 'Meal Name', value: _mealName),
-                    const SizedBox(height: 20),
-                    ResultColumn(
-                      title: 'Calories (per 100g)',
-                      value: _mealCalories,
+                    const Text(
+                      'Food Scanner',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Pacifico',
+                        letterSpacing: 2,
+                      ),
+                    ),
+                    const SizedBox(height: 25),
+                    Card(
+                      color: Colors.grey.withValues(alpha: 0.2),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      clipBehavior: Clip.antiAlias,
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: MediaQuery.of(context).size.height / 3,
+                        child: _image == null
+                            ? const Icon(
+                                Icons.image_outlined,
+                                size: 150,
+                                color: Colors.white24,
+                              )
+                            : Image.file(_image!, fit: BoxFit.cover),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        scannerActionButton(
+                          icon: Icons.photo_library,
+                          onTap: () => _pickImage(ImageSource.gallery),
+                        ),
+                        const SizedBox(height: 30),
+                        scannerActionButton(
+                          icon: Icons.camera_alt,
+                          onTap: () => _pickImage(ImageSource.camera),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ResultButtons(
-                iconData: Icons.arrow_back,
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-            ],
+                if (_isLoading)
+                  const CircularProgressIndicator(color: Colors.greenAccent)
+                else
+                  Column(
+                    children: [
+                      ResultColumn(title: 'Meal Name', value: _mealName),
+                      const SizedBox(height: 20),
+                      ResultColumn(
+                        title: 'Calories (per 100g)',
+                        value: _mealCalories,
+                      ),
+                    ],
+                  ),
+                ResultButtons(
+                  iconData: Icons.arrow_back,
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+              ],
+            ),
           ),
         ),
       ),

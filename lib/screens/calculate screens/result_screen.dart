@@ -81,103 +81,105 @@ class _ResultScreenState extends State<ResultScreen>
   Widget build(BuildContext context) {
     return Scaffold(
       body: ScreensCover(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 70),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              Column(
-                children: [
-                  SizedBox(
-                    width: 230,
-                    height: 230,
-                    child: Stack(
-                      fit: StackFit.expand,
-                      alignment: Alignment.center,
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 70),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Column(
+                  children: [
+                    SizedBox(
+                      width: 230,
+                      height: 230,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        alignment: Alignment.center,
+                        children: [
+                          CircularProgressIndicator(
+                            value: 1.0,
+                            strokeWidth: 25,
+                            color: Colors.grey.withValues(alpha: 0.2),
+                          ),
+                          AnimatedBuilder(
+                            animation: _progressAnimation,
+                            builder: (context, _) {
+                              return CircularProgressIndicator(
+                                value: _progressAnimation.value,
+                                strokeWidth: 25,
+                                color: widget.bmiResult.color,
+                                strokeCap: StrokeCap.round,
+                              );
+                            },
+                          ),
+                          Center(
+                            child: Text(
+                              widget.bmiResult.category,
+                              style: TextTheme.of(
+                                context,
+                              ).titleLarge?.copyWith(fontSize: 28),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 30),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        CircularProgressIndicator(
-                          value: 1.0,
-                          strokeWidth: 25,
-                          color: Colors.grey.withValues(alpha: 0.2),
+                        const Text(
+                          'Your BMI is ',
+                          style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
-                        AnimatedBuilder(
-                          animation: _progressAnimation,
-                          builder: (context, _) {
-                            return CircularProgressIndicator(
-                              value: _progressAnimation.value,
-                              strokeWidth: 25,
-                              color: widget.bmiResult.color,
-                              strokeCap: StrokeCap.round,
-                            );
-                          },
-                        ),
-                        Center(
-                          child: Text(
-                            widget.bmiResult.category,
-                            style: TextTheme.of(
-                              context,
-                            ).titleLarge?.copyWith(fontSize: 28),
+                        Text(
+                          widget.bmi.toStringAsFixed(1),
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: widget.bmiResult.color,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
                     ),
-                  ),
-                  const SizedBox(height: 30),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Your BMI is ',
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      ),
-                      Text(
-                        widget.bmi.toStringAsFixed(1),
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: widget.bmiResult.color,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Column(
-                children: [
-                  ResultColumn(
-                    title: 'BMI',
-                    value: widget.bmi.toStringAsFixed(1),
-                    explanation: 'Body Mass Index.',
-                  ),
-                  const SizedBox(height: 15),
-                  ResultColumn(
-                    title: 'BMR',
-                    value: widget.bmr.toStringAsFixed(1),
-                    explanation: 'Basal Metabolic Rate .',
-                  ),
-                  const SizedBox(height: 15),
-                  ResultColumn(
-                    title: 'TDEE',
-                    value: widget.tdee.toStringAsFixed(1),
-                    explanation: 'Total Daily Energy Expenditure.',
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ResultButtons(
-                    iconData: Icons.restart_alt,
-                    onPressed: () => Navigator.of(context).pop(),
-                  ),
-                  const SizedBox(width: 30),
-                  ResultButtons(
-                    iconData: Icons.arrow_right_alt,
-                    onPressed: _showSetGoalDialog,
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+                Column(
+                  children: [
+                    ResultColumn(
+                      title: 'BMI',
+                      value: widget.bmi.toStringAsFixed(1),
+                      explanation: 'Body Mass Index.',
+                    ),
+                    const SizedBox(height: 15),
+                    ResultColumn(
+                      title: 'BMR',
+                      value: widget.bmr.toStringAsFixed(1),
+                      explanation: 'Basal Metabolic Rate .',
+                    ),
+                    const SizedBox(height: 15),
+                    ResultColumn(
+                      title: 'TDEE',
+                      value: widget.tdee.toStringAsFixed(1),
+                      explanation: 'Total Daily Energy Expenditure.',
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ResultButtons(
+                      iconData: Icons.restart_alt,
+                      onPressed: () => Navigator.of(context).pop(),
+                    ),
+                    const SizedBox(width: 30),
+                    ResultButtons(
+                      iconData: Icons.arrow_right_alt,
+                      onPressed: _showSetGoalDialog,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
